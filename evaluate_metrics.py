@@ -80,7 +80,7 @@ class Metrics(object):
                 cnt += 1
                 result = self.judger.gen_new_result(result, ground_truth, ans[0])
                 scores = self.judger.get_score(result)
-        print(result)
+        # print(result)
         print(scores)
 
 
