@@ -134,7 +134,8 @@ class Judger:
         else:
             precision = 1.0 * res["TP"] / (res["TP"] + res["FP"])
             recall = 1.0 * res["TP"] / (res["TP"] + res["FN"])
-            f1 = 2 * precision * recall / (precision + recall)
+            f1 = (2.0 * precision * recall) / (precision + recall)
+            # print(f1)
 
         return precision, recall, f1
 
@@ -157,9 +158,9 @@ class Judger:
         macro_p, macro_r, macro_f = (sump * 1.0 / len(arr)), (sumr * 1.0 / len(arr)), (sumf * 1.0 / len(arr))
         avg_p, avg_r, avg_f = (micro_p + macro_p) / 2.0, (micro_r + macro_r) / 2.0, (micro_f + macro_f) / 2.0
 
-        result["Micro"] = [np.round(micro_p * 100, 6), np.round(micro_r * 100, 6), np.round(micro_f * 100)]
-        result["Macro"] = [np.round(macro_p * 100, 6), np.round(macro_r * 100, 6), np.round(macro_f * 100)]
-        result["Avg"] = [np.round(avg_p * 100, 6), np.round(avg_r * 100, 6), np.round(avg_f * 100)]
+        result["Micro"] = [np.round(micro_p * 100, 6), np.round(micro_r * 100, 6), np.round(micro_f * 100, 6)]
+        result["Macro"] = [np.round(macro_p * 100, 6), np.round(macro_r * 100, 6), np.round(macro_f * 100, 6)]
+        result["Avg"] = [np.round(avg_p * 100, 6), np.round(avg_r * 100, 6), np.round(avg_f * 100, 6)]
 
         return result
         # return (micro_f + sumf * 1.0 / len(arr)) / 2.0
