@@ -30,7 +30,10 @@ class Metrics(object):
         self.law_path = kwargs["law_path"]
         self.judger = Judger(accusation_path=self.accusation_path, law_path=self.law_path)
         self.train(train_path=train_path)
+        print("\nValid F-score......")
         self.calculate_metrics(path=self.valid_path)
+        print("\nTest F-score......")
+        self.calculate_metrics(path=self.test_path)
 
     def train(self, train_path):
         """
